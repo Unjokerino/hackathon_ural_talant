@@ -38,10 +38,16 @@ export default function index({ navigation, route }) {
     try {
       const response = await fetch(
         "https://rest-api-hakaton.herokuapp.com/category/events",
-        { method: "POST", body: JSON.stringify(body) }
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+          },
+          body: JSON.stringify(body),
+        }
       );
       const json = await response.json();
-      console.log(JSON.stringify(body));
+      console.log(json);
       setEvents(json);
     } catch (error) {
       console.log(error);
@@ -113,10 +119,11 @@ export default function index({ navigation, route }) {
         <BannerCard />
         <View style={styles.eventsContainer}>
           {events.map((event) => {
-            const { title, duration, date, type, category } = event;
+            const { _id, title, duration, date, type, category } = event;
             return (
               <EventCard
-                key={title}
+                _id={_id}
+                key={_id}
                 title={title}
                 duration={duration}
                 date={date}
