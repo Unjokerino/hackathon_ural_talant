@@ -26,7 +26,7 @@ export default function index() {
     <View>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Title style={styles.title}>Лента</Title>
+          <Title style={styles.title}>Новости</Title>
         </View>
         <ScrollView
           refreshControl={
